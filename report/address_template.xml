@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="address_template" inherit_id="odoo_fatoorah.invoice_with_qr">
+            <xpath expr="//div[@name='address_details']" position="replace">
+                <link href="/address_template/static/src/css/address_template.css" rel="stylesheet" type="text/css"/>
+                <t t-set="lans" t-value="o.with_context(lang='ar_001')"/>
+<!--                 <div class="wrapper"> -->
+                <div class="row">
+                    <div class="col-12">
+                         <div class="header-table text-center">
+                            <div class="header-row">
+                                <div class="header-cell">
+                                    <h4 class="text-left">  Buyer</h4>
+                                </div>
+                                <div class="header-cell">
+                                    <h4 class="text-right"> مشتر</h4>
+                                </div>
+                            </div>
+                         </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-12">
+                        <div class="table-container">
+                            <div class="table-row">
+                                <div class="col-4 table-cell">
+                                    <div class="table-cell-item text-left">Name</div>
+                                </div>
+                                <div class="table-cell">
+                                    <div class="table-cell-item">
+                                        <t t-esc="o.partner_id.name"/> -
+                                        <t t-esc="lans.partner_id.name"/>
+                                    </div>
+                                </div>
+                                <div class="col-4 table-cell">
+                                    <div class="table-cell-item text-right">اسم</div>
+                                </div>
+                            </div>
+                            <div class="table-row">
+                                <div class="col-4 table-cell">
+                                    <div class="table-cell-item text-left">Street Name</div>
+                                </div>
+                                <div class="table-cell">
+                                    <div class="table-cell-item">
+                                        <t t-esc="o.partner_id.street"/>-
+                                        <t t-esc="o.partner_id.street2"/>
+                                    </div>
+                                </div>
+                                <div class="col-4 table-cell">
+                                    <div class="table-cell-item text-right font-small">الشارع</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <div class="table-container">
+                            <div class="table-row">
+                                <div class="col-3 table-cell">
+                                    <div class="table-cell-item text-left">Building No.</div>
+                                </div>
+
+                                <div class="table-cell">
+                                    <div class="table-cell-item">
+                                        <t t-esc="o.partner_id.building_number"/>
+                                    </div>
+                                </div>
+                                <div class="col-3 table-cell">
+                                    <div class="table-cell-item text-right">رقم المبنى</div>
+                                </div>
+                            </div>
+                            <div class="table-row">
+                                <div class="col-3 table-cell">
+                                    <div class="table-cell-item text-left">City</div>
+                                </div>
+                                <div class="table-cell">
+                                    <div class="table-cell-item">
+                                        <t t-esc="o.partner_id.city"/>
+                                    </div>
+                                </div>
+                                 <div class="col-3 table-cell">
+                                    <div class="table-cell-item text-right">مدينة</div>
+                                </div>
+                            </div>
+                            <div class="table-row">
+                                <div class="col-3 table-cell">
+                                    <div class="table-cell-item text-left">Postal Code</div>
+                                </div>
+                                <div class="table-cell">
+                                    <div class="table-cell-item">
+                                        <t t-esc="o.partner_id.zip"/>
+                                    </div>
+                                </div>
+                                <div class="col-3 table-cell">
+                                    <div class="table-cell-item text-right">رمز بريدي</div>
+                                </div>
+                            </div>
+                            <div class="table-row">
+                                <div class="col-3 table-cell">
+                                    <div class="table-cell-item text-left">VAT No.</div>
+                                </div>
+                                <div class="table-cell">
+                                    <div class="table-cell-item">
+                                        <t t-esc="o.partner_id.vat"/>
+                                    </div>
+                                </div>
+                                <div class="col-3 table-cell">
+                                    <div class="table-cell-item text-right">الرقم الضريبي</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="table-container">
+                            <div class="table-row">
+                                <div class="col-3 table-cell">
+                                    <div class="table-cell-item text-left">District</div>
+                                </div>
+                                <div class="table-cell">
+                                    <div class="table-cell-item">
+                                        <t t-esc="o.partner_id.district"/>
+                                    </div>
+                                </div>
+                                <div class="col-3 table-cell">
+                                    <div class="table-cell-item text-right">منطقة</div>
+                                </div>
+                            </div>
+                            <div class="table-row">
+                                <div class="col-3 table-cell">
+                                    <div class="table-cell-item text-left">Country</div>
+                                </div>
+                                <div class="table-cell">
+                                    <div class="table-cell-item">
+                                        <t t-esc="o.partner_id.country_id.name"/>-
+                                        <t t-esc="lans.partner_id.country_id.name"/>
+                                    </div>
+                                </div>
+                                <div class="col-3 table-cell">
+                                    <div class="table-cell-item text-right">بلد</div>
+                                </div>
+                            </div>
+                            <div class="table-row">
+                                <div class="col-3 table-cell">
+                                    <div class="table-cell-item text-left">Additional No</div>
+                                </div>
+                                <div class="table-cell">
+                                    <div class="table-cell-item" >
+                                        <t t-esc="o.partner_id.additional_number" placeholder="--" />
+                                    </div>
+                                </div>
+                                <div class="col-3 table-cell">
+                                    <div class="table-cell-item text-right">رقم إضافي</div>
+                                </div>
+                            </div>
+                            <div class="table-row">
+                                <div class="col-3 table-cell">
+                                    <div class="table-cell-item text-left">Other ID</div>
+                                </div>
+                                <div class="table-cell">
+                                    <div class="table-cell-item">
+                                        <t t-esc="o.partner_id.other_id_type"/>
+                                        <t t-esc="o.partner_id.other_id"/>
+                                    </div>
+                                </div>
+                                <div class="col-3 table-cell">
+                                    <div class="table-cell-item text-right">معرف آخر</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </xpath>
+<!--                 </div> -->
+
+            <xpath expr="//div[@name='invoice_number']" position="replace">
+                <link href="/address_template/static/src/css/address_template.css" rel="stylesheet" type="text/css"/>
+                <t t-set="lans" t-value="o.with_context(lang='ar_001')"/>
+<!--                 <div class="wrapper"> -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="header-table text-center header-margin">
+                            <h4><b>TAX Invoice/فاتورة ضريبية</b></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-10 table-margin">
+                        <div class="table-container">
+                            <div class="table-row">
+                                <div class="table-merge col-3 table-cell" t-if="o.name">
+                                    <div class="table-cell-item ">Invoice No</div>
+                                    <div class="table-cell-item">رقم الفاتورة</div>
+                                </div>
+                                <div class="table-merge col-3 table-cell" t-if="o.invoice_date">
+                                    <div class="table-cell-item">Invoice Date</div>
+                                    <div class="table-cell-item">تاريخ الفاتورة</div>
+                                </div>
+                                <div class="table-merge col-3 table-cell" t-if="o.invoice_date_due and o.move_type == 'out_invoice' and o.state == 'posted'">
+                                    <div class="table-cell-item ">Due Date</div>
+                                    <div class="table-cell-item">تاريخ الاستحقاق</div>
+                                </div>
+                                <div class="table-merge col-3 table-cell" t-if="o.invoice_origin">
+                                    <div class="table-cell-item ">Source</div>
+                                    <div class="table-cell-item ">مصدر</div>
+                                </div>
+                                <div class="table-merge col-3 table-cell" t-if="o.partner_id.ref">
+                                    <div class="table-cell-item ">Customer Code</div>
+                                    <div class="table-cell-item ">كود العميل</div>
+                                </div>
+                                <div class="table-merge col-3 table-cell" t-if="o.ref">
+                                    <div class="table-cell-item ">Reference</div>
+                                    <div class="table-cell-item ">المرجعي</div>
+                                </div>
+                            </div>
+                            <div class="table-row">
+                                <div class="col-3 table-cell" t-if="o.name">
+                                    <div class="table-cell-item">
+                                        <p class="m-0" t-field="o.name"/>
+                                    </div>
+                                </div>
+                                <div class="col-3 table-cell" t-if="o.invoice_date">
+                                    <div class="table-cell-item">
+                                        <p class="m-0" t-field="o.invoice_date"/>
+                                    </div>
+                                </div>
+                                <div class="col-3 table-cell"  t-if="o.invoice_date_due and o.move_type == 'out_invoice' and o.state == 'posted'">
+                                    <div class="table-cell-item">
+                                        <p class="m-0" t-field="o.invoice_date_due"/>
+                                    </div>
+                                </div>
+                                <div class="col-3 table-cell" t-if="o.invoice_origin">
+                                    <div class="table-cell-item">
+                                        <p class="m-0" t-field="o.invoice_origin"/>
+                                    </div>
+                                </div>
+                                <div class="col-3 table-cell" t-if="o.partner_id.ref">
+                                    <div class="table-cell-item">
+                                        <p class="m-0" t-field="o.partner_id.ref"/>
+                                    </div>
+                                </div>
+                                <div class="col-3 table-cell" t-if="o.ref">
+                                    <div class="table-cell-item">
+                                        <p class="m-0" t-field="o.ref"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="qrcode" t-if="o.qr_code">
+                            <img t-att-src="'data:image/*;base64,%s' % to_text(o.qr_code)" style="width:auto;height:100px;"/>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="//table[@name='invoice_line_table']" position="replace">
+                <link href="/address_template/static/src/css/address_template.css" rel="stylesheet" type="text/css"/>
+                <t t-set="lans" t-value="o.with_context(lang='ar_001')"/>
+                <t t-set="display_discount" t-value="any(l.discount for l in o.invoice_line_ids)"/>
+                <div class="row mb-2">
+                    <div class="col-12">
+                        <div class="table-container">
+                            <div class="tab-row header-tab ">
+                                <div class="cols-1 tab-cell">
+                                    <div class="table-cell-item">Sl No.</div>
+                                    <div class="table-cell-item font-small">عدد</div>
+                                </div>
+                                <div class="cols-2 tab-cell" name="th_description">
+                                    <div class="table-cell-item">Product Description</div>
+                                    <div class="table-cell-item font-small">وصف المنتج</div>
+                                </div>
+                                <div class="cols-3 tab-cell">
+                                    <div class="table-cell-item">Quantity</div>
+                                    <div class="table-cell-item font-small">كمية</div>
+                                </div>
+                                <div class="cols-4 tab-cell">
+                                    <div class="table-cell-item">Unit Price</div>
+                                    <div class="table-cell-item font-small">سعر الوحدة</div>
+                                </div>
+                                <div class="cols-4 tab-cell" t-if="display_discount">
+                                    <div class="table-cell-item">Disc.%</div>
+                                    <div class="table-cell-item font-small">قرص.٪</div>
+                                </div>
+                                <div class="cols-5 tab-cell">
+                                    <div class="table-cell-item">Taxes</div>
+                                    <div class="table-cell-item font-small">الضرائب</div>
+                                </div>
+                                <div class="cols-6 tab-cell" groups="account.group_show_line_subtotals_tax_excluded">
+                                    <div class="table-cell-item">Taxable Amount</div>
+                                    <div class="table-cell-item font-small">قيمة الضريبة</div>
+                                </div>
+                                <div class="cols-7 tab-cell">
+                                    <div class="table-cell-item">Tax Amount</div>
+                                    <div class="table-cell-item font-small">قيمة الضريبة</div>
+                                </div>
+                                <div class="cols-8 tab-cell">
+                                    <div class="table-cell-item">Item Subtotal</div>
+                                    <div class="table-cell-item font-small">المجموع الفرعي</div>
+                                </div>
+                            </div>
+
+                            <t t-set="current_subtotal" t-value="0"/>
+                            <t t-set="lines" t-value="o.invoice_line_ids.sorted(key=lambda l: (-l.sequence, l.date, l.move_name, -l.id), reverse=True)"/>
+                            <t t-set="line_num" t-value="0"/>
+                            <t t-foreach="lines" t-as="line">
+                                <t t-set="current_subtotal" t-value="current_subtotal + line.price_subtotal" groups="account.group_show_line_subtotals_tax_excluded"/>
+                                <t t-set="current_subtotal" t-value="current_subtotal + line.price_total" groups="account.group_show_line_subtotals_tax_included"/>
+                                <div class="tab-row">
+                                    <div class="cols-1 tab-cell">
+                                        <div class="table-cell-item">
+                                            <t t-set="line_num" t-value="line_num+1"/>
+                                            <t t-esc="line_num"/>
+                                        </div>
+                                    </div>
+                                    <div class="cols-2 tab-cell">
+                                    <t t-if="not line.display_type" name="account_invoice_line_accountable">
+                                        <div class="table-cell-item" name="account_invoice_line_name">
+                                            <span t-field="line.name" t-options="{'widget': 'text'}"/>
+                                        </div>
+                                    </t>
+                                    </div>
+                                    <div class="cols-3 tab-cell">
+                                        <div class="table-cell-item">
+                                            <span t-field="line.quantity"/>
+                                            <span t-field="line.product_uom_id" groups="uom.group_uom"/>
+                                        </div>
+                                    </div>
+                                    <div class="cols-4 tab-cell">
+                                        <div class="table-cell-item">
+                                            <span t-field="line.price_unit"/>
+                                        </div>
+                                    </div>
+                                    <div class="cols-4 tab-cell" t-if="display_discount">
+                                        <div class="table-cell-item">
+                                            <span t-field="line.discount"/>
+                                        </div>
+                                    </div>
+                                    <div class="cols-5 tab-cell">
+                                        <div class="table-cell-item">
+                                            <span t-esc="', '.join(map(lambda x: (x.description or x.name), line.tax_ids))" id="line_tax_ids"/>
+                                        </div>
+                                    </div>
+                                    <div class="cols-6 tab-cell">
+                                        <div class="table-cell-item">
+                                            <span t-field="line.price_subtotal" groups="account.group_show_line_subtotals_tax_excluded"/>
+                                        </div>
+                                    </div>
+                                    <div class="cols-7 tab-cell">
+                                        <div class="table-cell-item">
+                                            <span t-esc="round(line.price_total-line.price_subtotal,2)"/>
+                                        </div>
+                                    </div>
+                                    <div class="cols-8 tab-cell">
+                                        <div class="table-cell-item">
+                                            <span t-field="line.price_total"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="//div[@name='sub_total']" position="replace">
+                <link href="/address_template/static/src/css/address_template.css" rel="stylesheet" type="text/css"/>
+                <t t-set="lans" t-value="o.with_context(lang='ar_001')"/>
+                <div class="row mb-2">
+                    <div class="col-12">
+                        <div class="table-container">
+                            <div class="table-row">
+                                <div class="col-3 table-cell">
+                                    <div class="table-cell-item text-left">Subtotal</div>
+                                </div>
+                                <div class="col-3 table-cell">
+                                    <div class="table-cell-item text-right">المجموع الفرعي</div>
+                                </div>
+                                <div class="col-3 table-cell">
+                                    <div class="table-cell-item text-right">
+                                        <span t-field="o.amount_untaxed"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <t t-foreach="o.amount_by_group" t-as="amount_by_group">
+                                <div class="table-row">
+                                    <t t-if="len(o.line_ids.filtered(lambda line: line.tax_line_id)) in [0, 1] and o.amount_untaxed == amount_by_group[2]">
+                                        <div class="col-3 table-cell">
+                                            <div class="table-cell-item text-left">
+                                                <span t-esc="amount_by_group[0]"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 table-cell">
+                                            <div class="table-cell-item text-right">الضرائب</div>
+                                        </div>
+                                        <div class="col-3 table-cell">
+                                            <div class="table-cell-item text-right">
+                                                <span t-esc="amount_by_group[3]"/>
+                                            </div>
+                                        </div>
+                                    </t>
+                                    <t t-else="">
+                                        <div class="col-3 table-cell">
+                                            <div class="table-cell-item text-left">
+                                                <span t-esc="amount_by_group[0]"/>
+                                                <span>on
+                                                    <t t-esc="amount_by_group[4]"/>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 table-cell">
+                                            <div class="table-cell-item text-right">الضرائب</div>
+                                        </div>
+                                        <div class="col-3 table-cell">
+                                            <div class="table-cell-item text-right">
+                                                <span t-esc="amount_by_group[3]"/>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </div>
+                            </t>
+                            <div class="table-row">
+                                <div class="col-3 table-cell">
+                                    <div class="table-cell-item text-left">Total</div>
+                                </div>
+                                <div class="col-3 table-cell">
+                                    <div class="table-cell-item text-right">المجموع</div>
+                                </div>
+                                <div class="col-3 table-cell">
+                                    <div class="table-cell-item text-right">
+                                        <span t-field="o.amount_total"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <t t-if="print_with_payments">
+                                <div class="table-row">
+                                    <div class="col-3 table-cell">
+                                        <div class="table-cell-item text-left">Paid on  :</div>
+                                            <t t-if="o.payment_state != 'invoicing_legacy'">
+                                                <t t-set="payments_vals" t-value="o.sudo()._get_reconciled_info_JSON_values()"/>
+                                                <t t-foreach="payments_vals" t-as="payment_vals">
+                                                    <div class="table-cell-item text-left"></div>
+                                                </t>
+                                            </t>
+                                    </div>
+                                    <t t-if="o.payment_state != 'invoicing_legacy'">
+                                        <t t-set="payments_vals" t-value="o.sudo()._get_reconciled_info_JSON_values()"/>
+                                            <div class="col-3 table-cell">
+                                                <t t-foreach="payments_vals" t-as="payment_vals">
+                                                    <div class="table-cell-item text-right font-grey">
+                                                        <i><t t-esc="payment_vals['date']" t-options='{"widget": "date"}'/></i>
+                                                    </div>
+                                                </t>
+                                            </div>
+                                            <div class="col-3 table-cell">
+                                                <t t-foreach="payments_vals" t-as="payment_vals">
+                                                    <div class="table-cell-item text-right font-grey">
+                                                        <i><t t-esc="payment_vals['amount']" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/></i>
+                                                    </div>
+                                                </t>
+                                            </div>
+                                    </t>
+                                </div>
+                            </t>
+                            <t t-if="print_with_payments">
+                                <t t-if="o.payment_state != 'invoicing_legacy'">
+                                    <t t-set="payments_vals" t-value="o.sudo()._get_reconciled_info_JSON_values()"/>
+                                        <t t-if="len(payments_vals) > 0">
+                                            <div class="table-row">
+                                                <div class="col-3 table-cell">
+                                                    <div class="table-cell-item text-left">Amount Due</div>
+                                                </div>
+                                                <div class="col-3 table-cell">
+                                                    <div class="table-cell-item text-right">المبلغ المستحق</div>
+                                                </div>
+                                                <div class="col-3 table-cell">
+                                                    <div class="table-cell-item text-right font-red">
+                                                        <i><span t-field="o.amount_residual"/></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </t>
+                                </t>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+       </template>
+    </data>
+</odoo>
