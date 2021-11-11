@@ -14,7 +14,7 @@
     'website': "http://www.mcmillanwoods.com/",
     'depends': ['base', 'account', 'odoo_fatoorah'],
     'data': [
-        'report/address_templates.xml',
+        'report/address_template.xml',
              ],
     'qweb': [],
     'images': [],

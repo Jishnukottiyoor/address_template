@@ -282,7 +282,7 @@
                                     <div class="table-cell-item">Unit Price</div>
                                     <div class="table-cell-item font-small">سعر الوحدة</div>
                                 </div>
-                                <div class="cols-4 tab-cell" t-if="display_discount">
+                                <div class="cols-3 tab-cell" t-if="display_discount">
                                     <div class="table-cell-item">Disc.%</div>
                                     <div class="table-cell-item font-small">قرص.٪</div>
                                 </div>
@@ -335,7 +335,7 @@
                                             <span t-field="line.price_unit"/>
                                         </div>
                                     </div>
-                                    <div class="cols-4 tab-cell" t-if="display_discount">
+                                    <div class="cols-3 tab-cell" t-if="display_discount">
                                         <div class="table-cell-item">
                                             <span t-field="line.discount"/>
                                         </div>
@@ -372,6 +372,15 @@
                 <div class="row mb-2">
                     <div class="col-12">
                         <div class="table-container">
+                            <div class="table-row">
+                                <div class="table-cell cell-color">
+                                    <div class="table-cell-item">
+                                        <span class="text-left">Invoiced Amount/ </span>
+                                        <span class="text-right">المبلغ المفوتر</span>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="table-row">
                                 <div class="col-3 table-cell">
                                     <div class="table-cell-item text-left">Subtotal</div>
@@ -435,6 +444,32 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="table-row">
+                                <div class="col-9 table-cell cell-color">
+                                    <div class="table-cell-item text-left">Invoiced Amount</div>
+                                </div>
+                                <div class="col-8 table-cell">
+                                    <div class="table-cell-item text-center">
+                                        <span t-field="o.num_word"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-row">
+                                <div class="col-8 table-cell">
+                                    <div class="table-cell-item text-right">
+                                        <span t-field="lans.num_word"/>
+                                    </div>
+                                </div>
+                                <div class="col-9 table-cell cell-color">
+                                    <div class="table-cell-item text-right">مبلغ الفاتورة</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-12">
+                        <div class="table-container">
                             <t t-if="print_with_payments">
                                 <div class="table-row">
                                     <div class="col-3 table-cell">
