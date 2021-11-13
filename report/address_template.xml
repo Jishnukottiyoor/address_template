@@ -471,53 +471,51 @@
                     <div class="col-12">
                         <div class="table-container">
                             <t t-if="print_with_payments">
-                                <div class="table-row">
-                                    <div class="col-3 table-cell">
-                                        <div class="table-cell-item text-left">Paid on  :</div>
-                                            <t t-if="o.payment_state != 'invoicing_legacy'">
-                                                <t t-set="payments_vals" t-value="o.sudo()._get_reconciled_info_JSON_values()"/>
-                                                <t t-foreach="payments_vals" t-as="payment_vals">
-                                                    <div class="table-cell-item text-left"></div>
-                                                </t>
-                                            </t>
-                                    </div>
-                                    <t t-if="o.payment_state != 'invoicing_legacy'">
-                                        <t t-set="payments_vals" t-value="o.sudo()._get_reconciled_info_JSON_values()"/>
-                                            <div class="col-3 table-cell">
-                                                <t t-foreach="payments_vals" t-as="payment_vals">
-                                                    <div class="table-cell-item text-right font-grey">
-                                                        <i><t t-esc="payment_vals['date']" t-options='{"widget": "date"}'/></i>
-                                                    </div>
-                                                </t>
-                                            </div>
-                                            <div class="col-3 table-cell">
-                                                <t t-foreach="payments_vals" t-as="payment_vals">
-                                                    <div class="table-cell-item text-right font-grey">
-                                                        <i><t t-esc="payment_vals['amount']" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/></i>
-                                                    </div>
-                                                </t>
-                                            </div>
-                                    </t>
-                                </div>
-                            </t>
-                            <t t-if="print_with_payments">
                                 <t t-if="o.payment_state != 'invoicing_legacy'">
                                     <t t-set="payments_vals" t-value="o.sudo()._get_reconciled_info_JSON_values()"/>
-                                        <t t-if="len(payments_vals) > 0">
-                                            <div class="table-row">
-                                                <div class="col-3 table-cell">
-                                                    <div class="table-cell-item text-left">Amount Due</div>
-                                                </div>
-                                                <div class="col-3 table-cell">
-                                                    <div class="table-cell-item text-right">المبلغ المستحق</div>
-                                                </div>
-                                                <div class="col-3 table-cell">
-                                                    <div class="table-cell-item text-right font-red">
-                                                        <i><span t-field="o.amount_residual"/></i>
+                                    <t t-if="payments_vals">
+                                        <div class="table-row">
+                                            <div class="col-3 table-cell">
+                                                <div class="table-cell-item text-left">Paid on :</div>
+                                                    <t t-foreach="payments_vals" t-as="payment_vals">
+                                                        <div class="table-cell-item text-left"></div>
+                                                    </t>
+                                            </div>
+                                            <div class="col-3 table-cell">
+                                                <t t-foreach="payments_vals" t-as="payment_vals">
+                                                    <div class="table-cell-item text-right font-grey">
+                                                        <i>
+                                                            <t t-esc="payment_vals['date']" t-options='{"widget": "date"}'/>
+                                                        </i>
                                                     </div>
+                                                </t>
+                                            </div>
+                                            <div class="col-3 table-cell">
+                                                <t t-foreach="payments_vals" t-as="payment_vals">
+                                                    <div class="table-cell-item text-right font-grey">
+                                                        <i>
+                                                            <t t-esc="payment_vals['amount']" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                                        </i>
+                                                    </div>
+                                                </t>
+                                            </div>
+                                        </div>
+                                    </t>
+                                    <t t-if="len(payments_vals) > 0">
+                                        <div class="table-row">
+                                            <div class="col-3 table-cell">
+                                                <div class="table-cell-item text-left">Amount Due</div>
+                                            </div>
+                                            <div class="col-3 table-cell">
+                                                <div class="table-cell-item text-right">المبلغ المستحق</div>
+                                            </div>
+                                            <div class="col-3 table-cell">
+                                                <div class="table-cell-item text-right font-red">
+                                                    <i><span t-field="o.amount_residual"/></i>
                                                 </div>
                                             </div>
-                                        </t>
+                                        </div>
+                                    </t>
                                 </t>
                             </t>
                         </div>

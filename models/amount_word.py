@@ -12,4 +12,4 @@ class InvoiceOrder(models.Model):
         for rec in self:
             rec.num_word = str(rec.currency_id.amount_to_text(rec.amount_total)) + ' only'
 
-    num_word = fields.Char(string="Amount In Words: ", compute='_compute_amount_in_word')
+    num_word = fields.Char(string="Amount In Words: ", compute='_compute_amount_in_word', translate="True")
